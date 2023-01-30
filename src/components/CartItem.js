@@ -38,7 +38,7 @@ const CartItem = ({ all }) => {
     const start = async () => {
       await updateOrder({ id: all._id,quantity:count });
       try {
-        let { data } = await axios.get("http://localhost:5000/api/v1/Orders", {
+        let { data } = await axios.get("https://react-toolkit-app-back.vercel.app/api/v1/Orders", {
           withCredentials: true,
         });
         dispatch(getUserOrders({ orders: data.AllOrders }));
@@ -52,7 +52,7 @@ const CartItem = ({ all }) => {
   const del = async () => {
     await deleteOrder({ id: all._id });
     try {
-      let { data } = await axios.get("http://localhost:5000/api/v1/Orders", {
+      let { data } = await axios.get("https://react-toolkit-app-back.vercel.app/api/v1/Orders", {
         withCredentials: true,
       });
       dispatch(getUserOrders({ orders: data.AllOrders }));

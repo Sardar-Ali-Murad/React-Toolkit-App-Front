@@ -17,7 +17,7 @@ const CartItems = () => {
   const clear = async () => {
     await trigger();
     try {
-      let { data } = await axios.get("http://localhost:5000/api/v1/Orders", {
+      let { data } = await axios.get("https://react-toolkit-app-back.vercel.app/api/v1/Orders", {
         withCredentials: true})
         dispatch(getUserOrders({ orders: data.AllOrders }));
     } catch (error) {

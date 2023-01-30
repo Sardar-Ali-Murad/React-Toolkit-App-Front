@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const Api = createApi({
   reducerPath: "Api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/v1/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://react-toolkit-app-back.vercel.app/api/v1/" }),
   endpoints: (builder) => ({
     setupUser: builder.mutation({
       query: (data) => ({
