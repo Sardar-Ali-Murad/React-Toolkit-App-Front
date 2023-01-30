@@ -12,6 +12,7 @@ export const Api = createApi({
         credentials: "include",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          "Access-Control-Allow-Credentials": true,
         },
       }),
     }),
@@ -32,6 +33,10 @@ export const Api = createApi({
       query: (data) => ({
         url: "/auth/getCurrentUser",
         credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
       }),
     }),
 
