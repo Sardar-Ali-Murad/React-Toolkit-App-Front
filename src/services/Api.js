@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+
+// Cloud Url https://react-toolkit-app-back.vercel.app/api/v1/
 export const Api = createApi({
   reducerPath: "Api",
   baseQuery: fetchBaseQuery({ baseUrl: "https://react-toolkit-app-back.vercel.app/api/v1/" }),
@@ -11,7 +13,7 @@ export const Api = createApi({
         body: data.userData,
         credentials: "include",
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          "Content-type": "application/json",
           "Access-Control-Allow-Credentials": true,
         },
       }),
