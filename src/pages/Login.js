@@ -36,11 +36,11 @@ const Login = () => {
       const formHandler=async (e)=>{
         e.preventDefault()
           const {data:userData,error,isLoading}=await addRecord({ userData:data, endPoint:"login", alertText:"Registered Successfully! Redirecting.." })
-          addUserToLocalStorage(userData.user,userData.token)
           
           if(userData!==undefined){
-             dispatch(setupUser({user:userData?.user}))
-             dispatch(seeAlert({alertText:"Registered Successfully! Redirecting..",alertType:"success"}))
+            dispatch(setupUser({user:userData?.user}))
+            dispatch(seeAlert({alertText:"Registered Successfully! Redirecting..",alertType:"success"}))
+            addUserToLocalStorage(userData.user,userData.token)
           }
           if(error){
             dispatch(seeAlert({alertText:error.data.msg,alertType:"danger"}))
