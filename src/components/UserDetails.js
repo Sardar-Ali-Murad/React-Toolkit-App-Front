@@ -43,13 +43,19 @@ const UserDetails = () => {
       website:props.user?.website,
       image:props?.user?.image
     });
-  
     
+    
+    const addUserToLocalStorage = (user,token) => {
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', JSON.stringify(token));
+    };
     const update=async ()=> {
       const {data:userData,error,isLoading}=await updateUser({ userData:data})
-
+      console.log(userData)
       if(userData!==undefined){
          dispatch(seeAlert({alertText:"Updated Successfully",alertType:"success"}))
+         addUserToLocalStorage(userData.user,userData.token)
+
       }
       if(error){
         dispatch(seeAlert({alertText:error.data.msg,alertType:"danger"}))
@@ -81,6 +87,7 @@ const UserDetails = () => {
             };
         });
     }
+
     
     const [updateUserPassword] = useUpdateUserPasswordMutation()
 
