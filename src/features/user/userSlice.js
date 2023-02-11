@@ -6,7 +6,7 @@ const initialState = {
     showAlert: false,
     alertText: '',
     alertType: '',
-    user: null,
+    user: JSON.parse(localStorage.getItem('user')) || null,
     Image:"",
     userImage:"",
     Properties:[],

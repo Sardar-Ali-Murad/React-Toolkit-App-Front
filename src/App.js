@@ -3,21 +3,21 @@ import {FAQS,ForgetPassword,ResetPassword,Register,Login,Terms,Privacy,User,Home
 import Navbar from "./components/Navbar"
 import MainFooter from "./components/MainFooter"
 import React from "react"
-import { useSelector, useDispatch } from 'react-redux'
-import {useCurrentUserQuery} from "./services/Api"
-import {getCurrentUser }  from "./features/user/userSlice"
+// import { useSelector, useDispatch } from 'react-redux'
+// import {useCurrentUserQuery} from "./services/Api"
+// import {getCurrentUser }  from "./features/user/userSlice"
 
 
 function App() {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  let {data,error,isLoading}= useCurrentUserQuery()
-  if(isLoading){
-    return <div className="spinner"></div>
-  }
-  if(data){
-    dispatch(getCurrentUser({user:data?.user}))
-  }
+  // let {data,error,isLoading}= useCurrentUserQuery()
+  // if(isLoading){
+  //   return <div className="spinner"></div>
+  // }
+  // if(data){
+  //   dispatch(getCurrentUser({user:data?.user}))
+  // }
   
   return (
     <div style={{overflowX:"hidden"}}>

@@ -21,7 +21,10 @@ export default function Landing() {
   //     apiKey: "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",
   //   });
   // });
- 
+  const addUserToLocalStorage = (user,token) => {
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', JSON.stringify(token));
+  };
   let [googleLogin]=  useGoogleLoginMutation()
    const responseGoogleSuccess = async (response) => {
        try {
@@ -35,8 +38,9 @@ export default function Landing() {
         setTimeout(()=>{
            dispatch(removeAlert())
         },3000)
-
+        
         dispatch(loginUsingGoogle({user:data.user}))
+        addUserToLocalStorage(data.user,data.token)
        } catch (error) {
          console.log(error.response.data.msg);
        }     

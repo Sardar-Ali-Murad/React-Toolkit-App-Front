@@ -17,8 +17,7 @@ const CartItems = () => {
   const clear = async () => {
     await trigger();
     try {
-      let { data } = await axios.get("https://react-toolkit-app-back.vercel.app/api/v1/Orders", {
-        withCredentials: true})
+      let { data } = await axios.get("https://react-toolkit-app-back.vercel.app/api/v1/Orders",,{headers:{Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`}})
         dispatch(getUserOrders({ orders: data.AllOrders }));
     } catch (error) {
       console.log(error)

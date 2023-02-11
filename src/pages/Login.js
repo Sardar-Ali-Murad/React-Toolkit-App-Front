@@ -25,6 +25,12 @@ const Login = () => {
             }
         })
     }
+    const addUserToLocalStorage = (user,token) => {
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', JSON.stringify(token));
+    };
+    
+    
 
         // Hnadle Form
       const formHandler=async (e)=>{
@@ -33,6 +39,7 @@ const Login = () => {
           if(userData!==undefined){
              dispatch(setupUser({user:userData?.user}))
              dispatch(seeAlert({alertText:"Registered Successfully! Redirecting..",alertType:"success"}))
+             addUserToLocalStorage(userData.user,userData.token)
           }
           if(error){
             dispatch(seeAlert({alertText:error.data.msg,alertType:"danger"}))

@@ -11,7 +11,6 @@ export const Api = createApi({
         url: `auth/${data.endPoint}`,
         method: "post",
         body: data.userData,
-        credentials: "include",
         headers: {
           "Content-type": "application/json",
           "Access-Control-Allow-Credentials": true,
@@ -24,9 +23,9 @@ export const Api = createApi({
         url: `auth/updateUser`,
         method: "PATCH",
         body: data.userData,
-        credentials: "include",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
         },
       }),
     }),
@@ -34,7 +33,6 @@ export const Api = createApi({
     currentUser: builder.query({
       query: (data) => ({
         url: "/auth/getCurrentUser",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
@@ -46,7 +44,6 @@ export const Api = createApi({
       query: (data) => ({
         url: "/auth/logout",
         method: "POST",
-        credentials: "include",
       }),
     }),
 
@@ -58,9 +55,10 @@ export const Api = createApi({
           password: data.password,
           confirmPassword: data.confirmPassword,
         },
-        credentials: "include",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
+
         },
       }),
     }),
@@ -69,7 +67,6 @@ export const Api = createApi({
       query: (data) => ({
         url: "/auth/uploadImage",
         method: "POST",
-        credentials: "include",
         body: data.formData,
       }),
     }),
@@ -78,8 +75,11 @@ export const Api = createApi({
       query: (data) => ({
         url: "/auth/updateImage",
         method: "POST",
-        credentials: "include",
         body: { image: data.Image },
+        headers:{
+          Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
+
+        }
       }),
     }),
 
@@ -87,7 +87,6 @@ export const Api = createApi({
       query: (data) => ({
         url: "/googleLogin",
         method: "POST",
-        credentials: "include",
         body: { idToken: data.response.credential },
       }),
     }),
@@ -96,7 +95,6 @@ export const Api = createApi({
       query: (data) => ({
         url: "auth/forgetPassword",
         method: "POST",
-        credentials: "include",
         body: { email: data.email },
       }),
     }),
@@ -105,7 +103,6 @@ export const Api = createApi({
       query: (data) => ({
         url: "auth/resetPassword",
         method: "POST",
-        credentials: "include",
         body: { email: data.email, token: data.token, password: data.password },
       }),
     }),
@@ -122,7 +119,6 @@ export const Api = createApi({
       query: (data) => ({
         url: "NewsLetter",
         method: "POST",
-        credentials: "include",
         body: { email: data.email},
       }),
     }),
@@ -132,7 +128,6 @@ export const Api = createApi({
       query: (data) => ({
         url: `property/${data.id}`,
         method: "GET",
-        credentials: "include",
       }),
     }),
 
@@ -140,8 +135,11 @@ export const Api = createApi({
       query: (data) => ({
         url: "/Orders",
         method: "POST",
-        credentials: "include",
         body: {product:data.product,quantity:data.quantity,color:data.color},
+        headers:{
+          Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
+
+        }
       }),
     }),
  
@@ -149,7 +147,6 @@ export const Api = createApi({
       query: (data) => ({
         url: `property?search=${data.search}&company=${data.company}&freeShipping=${data?.freeShipping}&category=${data.category}&sort=${data.sort}&price=${data.price}&color=${data.color}`,
         method: "GET",
-        credentials: "include",
       }),
     }),
 
@@ -163,14 +160,19 @@ export const Api = createApi({
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
-        credentials:"include",
+        headers:{
+          Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
+
+        }
       }),
     }),
     
     userOrders: builder.query({
       query: () => ({
         url: "Orders",
-        credentials:"include",
+        headers:{
+          Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
+        }
       }),
     }),
 

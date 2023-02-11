@@ -58,12 +58,17 @@ const UserDetails = () => {
         dispatch(removeAlert())
       },3000)
     }
+    const removeUserFromLocalStorage = () => {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+    };
 
     
 
-    const [trigger, result] = useLogoutUserApiMutation();
+    // const [trigger, result] = useLogoutUserApiMutation();
   const logout = () => {
-    trigger();
+    // trigger();
+    removeUserFromLocalStorage()
     dispatch(logoutUser())
   };
 
