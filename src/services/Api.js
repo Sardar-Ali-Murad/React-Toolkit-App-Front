@@ -162,7 +162,6 @@ export const Api = createApi({
         },
         headers:{
           Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
-
         }
       }),
     }),
@@ -183,7 +182,7 @@ export const Api = createApi({
         url: `Orders/${data.id}`,
         method: "DELETE",
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
         },
         credentials:"include",
       }),
@@ -194,7 +193,7 @@ export const Api = createApi({
         url: `Orders/${data.id}`,
         method: "PATCH",
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
         },
         credentials:"include",
         body:{quantity:data.quantity}
@@ -208,8 +207,8 @@ export const Api = createApi({
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+
         },
-        credentials:"include",
         body:{cartItems:data.userOrders}
       }),
     }),

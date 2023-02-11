@@ -37,26 +37,24 @@ const CartItem = ({ all }) => {
   React.useEffect(() => {
     const start = async () => {
       await updateOrder({ id: all._id,quantity:count });
-      try {
-        let { data } = await axios.get("https://react-toolkit-app-back.vercel.app/api/v1/Orders",{headers:{Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`}});
-        dispatch(getUserOrders({ orders: data.AllOrders }));
-      } catch (error) {
-        console.log(error);
-      }
+      dispatch(getUserOrders({ orders: data.AllOrders }));
+      // try {
+      //   // let { data } = await axios.get("https://react-toolkit-app-back.vercel.app/api/v1/Orders",{headers:{Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`}});
+      // } catch (error) {
+      //   console.log(error);
+      // }
     };
     start();
   }, [count]);
 
   const del = async () => {
     await deleteOrder({ id: all._id });
-    try {
-      let { data } = await axios.get("https://react-toolkit-app-back.vercel.app/api/v1/Orders", {
-        withCredentials: true,
-      });
-      dispatch(getUserOrders({ orders: data.AllOrders }));
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(getUserOrders({ orders: data.AllOrders }));
+    // try {
+    //   let { data } = await axios.get("https://react-toolkit-app-back.vercel.app/api/v1/Orders",{headers:{Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`}});
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
